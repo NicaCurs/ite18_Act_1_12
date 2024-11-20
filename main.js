@@ -77,7 +77,7 @@ const loader = new FontLoader();
 loader.load(
   "https://threejs.org/examples/fonts/helvetiker_regular.typeface.json",
   (font) => {
-    const textGeometry = new TextGeometry("PENASO - ACT 1.6-1.12", {
+    const textGeometry = new TextGeometry("CURSAT - Creamy Flakes", {
       font: font,
       size: 0.5,
       height: 0.2,
