@@ -3,21 +3,19 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 
-// Function to generate random vibrant cream neon colors
-const getRandomCreamNeonColor = () => {
-  const creamNeonColors = [
-    0xfff5ba, // Light Cream Yellow
-    0xffe4b5, // Moccasin
-    0xffdab9, // Peach Puff
+// Function to generate random yellowish neon colors
+const getRandomYellowCreamColor = () => {
+  const yellowCreamColors = [
     0xfff8dc, // Cornsilk
     0xffffe0, // Light Yellow
-    0xfdfd96, // Pastel Yellow
+    0xfffacd, // Lemon Chiffon
+    0xffeb99, // Soft Yellow
     0xffd700, // Gold
-    0xffa500, // Vibrant Orange
-    0xffc0cb, // Pink Cream
-    0xf5deb3, // Wheat
+    0xffe135, // Banana Yellow
+    0xfdfd96, // Pastel Yellow
+    0xffc87c, // Warm Creamy Orange
   ];
-  return creamNeonColors[Math.floor(Math.random() * creamNeonColors.length)];
+  return yellowCreamColors[Math.floor(Math.random() * yellowCreamColors.length)];
 };
 
 // Function to generate a random size for the octahedron
@@ -45,26 +43,26 @@ controls.minDistance = 5;
 controls.maxDistance = 20;
 
 // Lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Brighter ambient light
+const ambientLight = new THREE.AmbientLight(0xfff8dc, 0.7); // Warm yellow ambient light
 scene.add(ambientLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 1.5);
+const pointLight = new THREE.PointLight(0xffffa5, 1.8); // Slightly warmer point light
 pointLight.position.set(10, 10, 10);
 scene.add(pointLight);
 
-// Create octahedrons with random sizes and vibrant cream neon colors
+// Create octahedrons with random sizes and yellowish neon cream colors
 const octahedrons = [];
 for (let i = 0; i < 50; i++) {
-  const creamMaterial = new THREE.MeshStandardMaterial({
-    color: getRandomCreamNeonColor(),
-    emissive: getRandomCreamNeonColor(),
-    emissiveIntensity: 1.8, // Increased intensity for more glow
-    roughness: 0.1,         // Less rough for a shinier appearance
-    metalness: 0.7,         // Higher metallic effect
+  const yellowCreamMaterial = new THREE.MeshStandardMaterial({
+    color: getRandomYellowCreamColor(),
+    emissive: getRandomYellowCreamColor(),
+    emissiveIntensity: 2.0, // Slightly stronger glow
+    roughness: 0.15,        // Smooth for a reflective finish
+    metalness: 0.8,         // Increased metallic effect
   });
 
   const octahedronGeometry = new THREE.OctahedronGeometry(getRandomSize());
-  const octahedron = new THREE.Mesh(octahedronGeometry, creamMaterial);
+  const octahedron = new THREE.Mesh(octahedronGeometry, yellowCreamMaterial);
   octahedron.position.set(
     (Math.random() - 0.5) * 10,
     (Math.random() - 0.5) * 10,
@@ -84,7 +82,7 @@ loader.load(
       size: 0.5,
       height: 0.2,
     });
-    const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe0 });
     const textMesh = new THREE.Mesh(textGeometry, textMaterial);
     textMesh.position.set(-3, 0, 0);
     scene.add(textMesh);
