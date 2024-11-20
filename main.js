@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 
-// Function to generate random cream neon colors
+// Function to generate random vibrant cream neon colors
 const getRandomCreamNeonColor = () => {
   const creamNeonColors = [
     0xfff5ba, // Light Cream Yellow
@@ -13,6 +13,8 @@ const getRandomCreamNeonColor = () => {
     0xffffe0, // Light Yellow
     0xfdfd96, // Pastel Yellow
     0xffd700, // Gold
+    0xffa500, // Vibrant Orange
+    0xffc0cb, // Pink Cream
     0xf5deb3, // Wheat
   ];
   return creamNeonColors[Math.floor(Math.random() * creamNeonColors.length)];
@@ -43,22 +45,22 @@ controls.minDistance = 5;
 controls.maxDistance = 20;
 
 // Lighting
-const ambientLight = new THREE.AmbientLight(0xaaaaaa, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Brighter ambient light
 scene.add(ambientLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 1);
+const pointLight = new THREE.PointLight(0xffffff, 1.5);
 pointLight.position.set(10, 10, 10);
 scene.add(pointLight);
 
-// Create octahedrons with random sizes and cream neon colors
+// Create octahedrons with random sizes and vibrant cream neon colors
 const octahedrons = [];
 for (let i = 0; i < 50; i++) {
   const creamMaterial = new THREE.MeshStandardMaterial({
     color: getRandomCreamNeonColor(),
     emissive: getRandomCreamNeonColor(),
-    emissiveIntensity: 1.2,
-    roughness: 0.3,
-    metalness: 0.5,
+    emissiveIntensity: 1.8, // Increased intensity for more glow
+    roughness: 0.1,         // Less rough for a shinier appearance
+    metalness: 0.7,         // Higher metallic effect
   });
 
   const octahedronGeometry = new THREE.OctahedronGeometry(getRandomSize());
